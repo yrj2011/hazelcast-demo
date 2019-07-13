@@ -8,6 +8,8 @@
 	<packaging>jar</packaging>
 	<properties>
 		<hazelcast.vertsion>3.6.3</hazelcast.vertsion>
+		<boot.version>1.4.3.RELEASE</boot.version>
+		<vertx.version>3.6.3</vertx.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -21,4 +23,41 @@
 			<version>${hazelcast.vertsion}</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${boot.version}</version>
+				<configuration>
+					<fork>true</fork>
+					<mainClass>io.vertx.examples.spring.clustering.hazelcast.Application</mainClass>
+					<!-- //&lt;!&ndash;主类 包含main&ndash;&gt;-->
+					<layout>JAR</layout>
+
+				</configuration>
+				<executions>
+					<execution><!-- //&lt;!&ndash;-包类型(必须大写) JAR，WAR，ZIP，MODULE，NONE &ndash;&gt;-->
+						<goals>
+							<!--可以把依赖的包都打包到生成的Jar包中 -->
+							<goal>repackage</goal>
+						</goals>
+						<!--可以生成不含依赖包的不可执行Jar包 -->
+						<configuration>
+							<classifier>exec</classifier>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
