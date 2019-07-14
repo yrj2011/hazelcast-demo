@@ -5,7 +5,7 @@
 	<map name="demo">
 		<map-store enabled="true" initial-mode="EAGER">
 			<class-name>org.palm.hazelcast.map.store.MapStoreExample</class-name>
-			<write-delay-seconds>60</write-delay-seconds>
+			<write-delay-seconds>10</write-delay-seconds>
 			<write-batch-size>1000</write-batch-size>
 			<write-coalescing>true</write-coalescing>
 		</map-store>

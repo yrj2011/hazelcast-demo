@@ -1,6 +1,7 @@
 package org.palm.hazelcast.map.store;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,6 +64,7 @@ public class MapStoreExample implements MapStore<Integer, String> {
 
 	@Override
 	public void storeAll(Map<Integer, String> map) {// 存储所有键值
+		System.out.println("save all map:"+map.size()+"  "+new Date());
 		store.putAll(map);
 	}
 }
